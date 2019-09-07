@@ -3,36 +3,21 @@ from flask import Flask, request, render_template #for query string (1hr 8mins)
 
 app = Flask(__name__)
 
-compliments = ['awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza',
-    'oh-so-not-meh', 'brilliant', 'ducky', 'coolio', 'incredible',
-    'wonderful', 'smashing', 'lovely', 'tenacious', 'Pythonic']
+
 horoscopes = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
-@app.route('/compliment') #this decorator on top of the function makes it a route
-def get_compliments(): #method that gives the user's name a compliment
-    name = request.args.get('name') #extract a query string we inputted from the text box
-    show_compliments = request.args.get('show_compliments') #contains the value (on/none) of the check_box
-    # compliment = choice(compliments) #choose randomly from our compliments list
-
-    num_compliments = int(request.args.get('num_compliments')) #grabs the value we have stored in num_compliments and convert it to integer
-    compliments_to_show = sample(compliments, num_compliments) #choose a unique random elements from a population sequence or set
-    # return f"Hello there, {name}! You are so {compliment}!" #f lets you put the string in a variable
-    return render_template('compliments.html', 
-                            name = name, 
-                            show_compliments = show_compliments, 
-                            compliments = compliments_to_show ) #render_template(template_name_or_list, **context) = renders a template from the template folder with the give context
-
-@app.route("/horoscopes")
+@app.route('/horoscope')
 def get_horoscope():
     name = request.args.get('name') #extract a query string
-    horoscope = choice(horoscopes) #choose randomly from our compliments list
-    
-    pass
-    num_compliments = int(request.args.get('num_compliments'))
-    show_compliments = request.args.get('show_compliments')
-    compliments_to_show = sample(compliments, num_compliments)
-    return f"Hello there, {name}! You are so {horoscope}!" #f lets you put the string in a variable
-
+    num_horoscopes = int(request.args.get('num_horoscopes')) #grabs number of horoscopes to show depending on the amount of selected via dropdown
+    show_horoscopes = request.args.get('show_horoscopes')
+    horoscopes_to_show = sample(horoscopes, num_horoscopes)
+    sign = request.args.get('sign')
+    return render_template('horoscopes.html',
+                            name = name,
+                            sign = sign,
+                            show_horoscopes = show_horoscopes,
+                            horoscopes = horoscopes_to_show ) #display our horoscopes.html
 
 
 @app.route('/')

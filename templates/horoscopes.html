@@ -1,0 +1,23 @@
+{% extends 'base.html' %} <!-- extending base; now override we can override the content block on our child templates -->
+
+{% block title %}
+    Receive Horoscopes!
+{% endblock %}
+
+
+
+{% block content %}
+    <p>
+        Hello there, {{name}}! <!-- displays the name we inputted in name:"name" -->
+        {% if show_horoscopes %} <!-- if show_compliments (which is the text box on or none) is on, then we show the compliment -->
+            Since you are a <strong>{{sign}}</strong>, you're matching horoscopes are:
+            <ul>
+                {% for horoscope in horoscopes %}
+                    {% include 'horoscope.html' %}  
+                {% endfor %}
+            </ul>
+        {% else %}
+            Have a great day!
+        {% endif %}
+    </p>
+{% endblock %}

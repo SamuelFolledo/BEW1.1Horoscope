@@ -1,27 +1,42 @@
 {% extends 'base.html' %} <!-- this is kind of like importing or creating a refernce for your base.html file-->
 
-{% block title %}
-    Enter Your Info
-{% endblock %}
 
-{% block body %}
-<form action='/compliment'>
-    <p>
-        What is your name?
-        <input type="text" name="name"/> <!-- type = text is the text box -->
-    </p>
-    <p>
-        <input type="checkbox" name="show_compliments"/> <!-- -->
-        Show Compliments
-    </p>
-    <p>
-        How many compliments?
-        <select name="num_compliments"> <!-- -->
-            <option value="1">One</option> <!-- -->
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </p>
-    <input type="submit"> <!-- -->
-</form>
+{% block content %}
+    <form action = '/horoscope'>
+        <p>
+            What is your name?
+            <input type="text" name = "name"/>
+
+            What is your sign?
+            <select name="sign"> <!-- -->
+                <option value="Aries">Aries</option> <!-- -->
+                <option value="Taurus">Taurus</option>
+                <option value="Gemini">Gemini</option>
+                <option value="Cancer">Cancer</option> <!-- -->
+                <option value="Leo">Leo</option>
+                <option value="Virgo">Virgo</option>
+                <option value="Libra">Libra</option> <!-- -->
+                <option value="Scorpio">Scorpio</option>
+                <option value="Sagittarius">Sagittarius</option>
+                <option value="Capricorn">Capricorn</option> <!-- -->
+                <option value="Aquarius">Aquarius</option>
+                <option value="Pisces">Pisces</option>
+            </select>
+        </p>
+        <p>
+            <input type="checkbox" name="show_horoscopes"/> <!-- -->
+            Show Horoscopes?
+        </p>
+        <p>
+            How many horoscopes?
+            <select name="num_horoscopes"> <!-- -->
+                <option value="1">One</option> <!-- -->
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+            </select>
+        </p>
+        <input type="submit"> <!-- -->
+    </form>
 {% endblock %}
