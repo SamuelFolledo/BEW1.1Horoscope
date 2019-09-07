@@ -12,15 +12,15 @@ horoscopes = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "S
 def get_compliments(): #method that gives the user's name a compliment
     name = request.args.get('name') #extract a query string we inputted from the text box
     show_compliments = request.args.get('show_compliments') #contains the value (on/none) of the check_box
-    compliment = choice(compliments) #choose randomly from our compliments list
+    # compliment = choice(compliments) #choose randomly from our compliments list
 
-    # num_compliments = int(request.args.get('num_compliments'))
-    # compliments_to_show = sample(compliments, num_compliments)
+    num_compliments = int(request.args.get('num_compliments')) #grabs the value we have stored in num_compliments and convert it to integer
+    compliments_to_show = sample(compliments, num_compliments) #choose a unique random elements from a population sequence or set
     # return f"Hello there, {name}! You are so {compliment}!" #f lets you put the string in a variable
     return render_template('compliments.html', 
                             name = name, 
                             show_compliments = show_compliments, 
-                            compliment = compliment ) #render_template(template_name_or_list, **context) = renders a template from the template folder with the give context
+                            compliments = compliments_to_show ) #render_template(template_name_or_list, **context) = renders a template from the template folder with the give context
 
 @app.route("/horoscopes")
 def get_horoscope():
