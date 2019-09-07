@@ -1,6 +1,10 @@
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %} <!-- this is kind of like importing or creating a refernce for your base.html file-->
 
-{% block body %} -->
+{% block title %}
+    Enter Your Info
+{% endblock %}
+
+{% block body %}
 <form action='/compliment'>
     <p>
         What is your name?
@@ -20,4 +24,4 @@
     </p>
     <input type="submit"> <!-- -->
 </form>
-<!-- {% endblock %} -->
+{% endblock %}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My First App</title>
+        <title>{% block title %} {% endblock %}</title> <!-- Creates the base.html-->
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block content %} {% endblock %}
     </body>
 </html>

@@ -1,17 +1,24 @@
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %} <!-- extending base; now override we can override the content block on our child templates -->
 
-{% block body %} -->
+{% block title %}
+    Receive Compliments!
+{% endblock %}
+
+
+
+{% block content %}
     <p>
-        Hello there, {{name}}! <!-- -->
+        Hello there, {{name}}! <!-- displays the name we inputted in name:"name" -->
         {% if show_compliments %} <!-- if show_compliments (which is the text box on or none) is on, then we show the compliment -->
             You are so:
             <ul>
                 {% for compliment in compliments %}
-                    <li> {{ compliment }}</li>
+                    <!-- <li> {{ compliment }}</li> with compliment.html we can remove this line -->
+                    {% include 'compliment.html' %}    
                 {% endfor %}
             </ul>
         {% else %}
             Have a nice day!
         {% endif %}
     </p>
-<!-- {% endblock %} -->
+{% endblock %}
